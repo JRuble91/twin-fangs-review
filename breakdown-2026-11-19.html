@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nov 19 Kicks and Globules</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Landing page for the Twin Fangs reviews: same dark slate + gold look as the review pages and the Globule grabs page. */
+:root{
+  --bg:#0d1016; --panel:#151a23; --panel2:#1c2330; --line:#283141;
+  --ink:#eef0f4; --muted:#9aa3b2; --faint:#6b7486;
+  --accent:#e2ad4f; --accent-soft:rgba(226,173,79,.14); --bad:#ef5d5d;
+  --display:"Barlow Condensed","Arial Narrow",sans-serif; --body:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg)}
+body{color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.rwbar{position:sticky;top:0;z-index:7;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.rwbar .in{max-width:980px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:18px;height:62px}
+.mark{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:25px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink);text-decoration:none;white-space:nowrap}
+.rwbar nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1}
+.rwbar nav a{color:var(--muted);font-weight:600;font-size:14px;padding:8px 11px;border-radius:8px;white-space:nowrap;text-decoration:none}
+.rwbar nav a:hover{color:var(--ink);background:var(--panel)}
+.rwbar nav a[aria-current="page"]{color:var(--ink);background:var(--panel2)}
+main{max-width:980px;margin:0 auto;padding-block:36px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:30px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,7vw,60px);line-height:.95;letter-spacing:.5px;text-transform:uppercase;margin:6px 0 10px}
+h2{font-family:var(--display);font-weight:700;font-size:28px;letter-spacing:.4px;text-transform:uppercase;margin:0;line-height:1.1}
+.lede{margin:0;color:#cfd4dc;max-width:64ch}
+.boss{display:flex;flex-direction:column;gap:14px}
+.bosshead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px}
+.bosshead p{margin:0;color:var(--muted);font-size:14px}
+.bosshead b{color:var(--ink);font-variant-numeric:tabular-nums}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.card.wide{grid-column:1 / -1;border-color:color-mix(in srgb,var(--accent) 40%,var(--line));background:linear-gradient(180deg,var(--accent-soft),var(--panel) 70%)}
+.card.full{grid-column:1 / -1}
+.card .when{font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+.card h3{margin:0;font-family:var(--display);font-weight:700;font-size:26px;text-transform:uppercase;letter-spacing:.3px;line-height:1}
+.stats{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--muted)}
+.stats b{color:var(--ink);font-variant-numeric:tabular-nums}
+.card p{margin:0;color:#cfd4dc;font-size:14px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14px;padding:8px 13px;border-radius:9px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--panel2)}
+.btn:hover{border-color:var(--faint)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#1c1405}
+.btn:focus-visible,.rwbar a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.earlier{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:14px}
+.earlier a{font-weight:600;text-decoration:none}
+.earlier a:hover{text-decoration:underline}
+footer{color:var(--faint);font-size:13px}
+@media (max-width:640px){.cards{grid-template-columns:1fr}.rwbar .in{gap:8px}.mark{font-size:20px;letter-spacing:1.5px}.rwbar nav a{padding:8px}}
+
+.rwcrumb{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px}
+.rwcrumb a{font-weight:600;text-decoration:none}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+.bars{display:flex;flex-direction:column;gap:10px}
+.bar{display:grid;grid-template-columns:150px 1fr 92px;gap:12px;align-items:center;font-size:14px}
+.bar .lb{font-weight:600}
+.bar .tr{height:12px;border-radius:6px;background:#232a37;overflow:hidden}
+.bar .tr i{display:block;height:100%;border-radius:6px;background:var(--c)}
+.bar .vl{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar .vl b{color:var(--ink);font-size:16px}
+.sub2{margin:0;color:var(--muted);font-size:13.5px;line-height:1.5}
+.sub2 b{color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:13.5px;color:var(--muted)}
+.chip b{color:var(--ink);font-family:var(--display);font-size:22px;font-weight:800;margin-right:6px}
+figure{margin:0;display:flex;flex-direction:column;gap:8px}
+figure a{display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:13px;color:var(--faint)}
+@media (max-width:640px){.bar{grid-template-columns:110px 1fr 70px}}
+</style>
+</head>
+<body>
+<header class="rwbar"><div class="in">
+  <a class="mark" href="index.html" aria-label="Reawaken raid reviews"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M13 2 L23 7 V14 C23 19 18.5 22.6 13 24 C7.5 22.6 3 19 3 14 V7 Z" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 15 L13 8 L18 15 M10.5 12.5 H15.5" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Reawaken</span></a>
+  <nav aria-label="Reviews"><a href="index.html" aria-current="page">Nights</a><a href="the-twin-fangs-mythic-all.html">Every pull</a></nav>
+</div></header>
+<main>
+  <div class="rwcrumb"><a href="index.html">← All nights</a><a href="the-twin-fangs-mythic-2026-11-19.html">Thu Nov 19 review →</a></div>
+  <div>
+    <div class="eyebrow">Thu Nov 19 · The Twin Fangs · Mythic</div>
+    <h1>Kicks + Globules</h1>
+    <p class="lede">The two things that ended most of tonight's pulls, raider by raider: every Broodling spot and who kicked it, and every raider's Globule in every Deluge of every pull. Tap an image to open it full size.</p>
+  </div>
+  <div class="chips"><span class="chip"><b>35</b>pulls</span><span class="chip"><b>37.1%</b>best (pull 33)</span><span class="chip"><b>41</b>Bursts went off</span><span class="chip"><b>22</b>Globules blew up</span></div>
+  <section class="panel">
+    <h2>What started each wipe</h2>
+    <div class="bars"><div class="bar" style="--c:#ef5d5d" title="22"><span class="lb">Visceral Burst</span><span class="tr"><i style="width:100%"></i></span><span class="vl"><b>69%</b> · 22</span></div><div class="bar" style="--c:#e2ad4f" title="5"><span class="lb">Caustic Globule</span><span class="tr"><i style="width:23%"></i></span><span class="vl"><b>16%</b> · 5</span></div><div class="bar" style="--c:#c77dff" title="2"><span class="lb">Stone Breaker</span><span class="tr"><i style="width:9%"></i></span><span class="vl"><b>6%</b> · 2</span></div><div class="bar" style="--c:#4da3ff" title="1"><span class="lb">Ravenous Feast</span><span class="tr"><i style="width:5%"></i></span><span class="vl"><b>3%</b> · 1</span></div><div class="bar" style="--c:#6b7486" title="2"><span class="lb">Other</span><span class="tr"><i style="width:9%"></i></span><span class="vl"><b>6%</b> · 2</span></div></div>
+    <ul class="sub2" style="margin:0;padding-left:18px"><li><b>Visceral Burst:</b> 1st Brood 4 · 2nd Brood 13 · 3rd 3 · 4th 2</li><li><b>Caustic Globule:</b> pulls 3, 6, 9, 10, 31</li><li><b>Stone Breaker:</b> pulls 15, 19, right after a Deluge 2 Globule blew up</li><li><b>Ravenous Feast:</b> pull 30</li><li><b>Other:</b> pull 8 Tainted Burst at 3:48 · pull 20 Deadly Venom at 0:38</li></ul>
+    <p class="sub2">Out of <b>32 pulls</b> (pulls 1, 12 and 21 were resets in the first 25 seconds). For each pull: the first moment 3 or more people died within 6 seconds, and the first mechanic that failed just before it. The review page counts the biggest wave of deaths instead, which is why it shows Ravenous Feast 8 times: 7 of those Feasts came right after Bursts had killed the soakers.</p>
+  </section>
+  <section class="panel">
+    <h2>Broodling kicks by spot</h2>
+    <p class="sub2">Who held each of the ten spots, every Burst that got through and why (late, no kick, too far from the spot, or the kick spent on another number), the same spot getting a second Broodling, and who kicked which spot all night.</p>
+    <figure><a href="img/broodling-kicks-2026-11-19.webp"><img src="img/broodling-kicks-2026-11-19.webp" alt="Broodling kicks by spot for Nov 19: a map of the ten spots with who held each and how many Bursts went off, the Bursts that got through by kicker, second Broodlings on the same spot, and a kicker by spot grid" loading="lazy" width="3000" height="5470"></a><figcaption>From the Warcraft Logs replay. Broods 1–2 only in the kicker list; spots after the Submerge are approximate.</figcaption></figure>
+  </section>
+  <section class="panel">
+    <h2>Globule grabs, every Deluge</h2>
+    <p class="sub2">One box per raider per Deluge. Solid red ✗ = alive the whole Deluge, not your skip, 2 or fewer stacks, didn't grab, and a Globule blew up. Gold ring = closest to the one that blew up. At the bottom: every Deluge where one blew up and who should have had it.</p>
+    <figure><a href="img/globule-grabs-2026-11-19.webp"><img src="img/globule-grabs-2026-11-19.webp" alt="Globule grabs for Nov 19: a grid of every raider by every Deluge of every pull, marking grabs, misses, skips and deaths, with a list of every Deluge where a Globule blew up" loading="lazy" width="3104" height="5516"></a><figcaption>Skips used: Deluge 1 Thrust and Aroarian/Bail; Deluge 2 Ruble, Gladrix, Fercus; Deluge 3 Dishwasher, Chris, Aeryx; Deluge 4 Des, Yanessa, Bargirl.</figcaption></figure>
+  </section>
+  <footer>Built from Warcraft Logs report jzPRWL3NFQ27AwYV.</footer>
+</main>
+</body>
+</html>

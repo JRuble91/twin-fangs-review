@@ -2,52 +2,106 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Reawaken · Raid Reviews</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
 <style>
-:root { --bg: #f7f6f2; --panel: #ffffff; --fg: #1f1e1b; --muted: #6b6860; --line: #e3e0d8; --accent: #2f6fdb; --accent2: #2a9d8f; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #171614; --panel: #201f1c; --fg: #f1efe9; --muted: #a39f95; --line: #34322d; --accent: #6ea2ff; --accent2: #4fc3b4; } }
-:root[data-theme="dark"] { --bg: #171614; --panel: #201f1c; --fg: #f1efe9; --muted: #a39f95; --line: #34322d; --accent: #6ea2ff; --accent2: #4fc3b4; }
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--fg); font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-main { max-width: 760px; margin: 0 auto; padding: 48px 16px 64px; }
-h1 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: 34px; margin: 0 0 6px; }
-h2 { font-size: 15px; font-weight: 600; color: var(--muted); margin: 28px 0 10px; text-transform: none; }
-.sub { color: var(--muted); font-size: 14px; margin-bottom: 8px; line-height: 1.5; }
-.cards { display: grid; gap: 14px; }
-a.card { display: block; text-decoration: none; color: inherit; background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 12px; padding: 18px 20px; transition: transform .15s, box-shadow .15s; }
-a.card.all { border-left-color: var(--accent2); }
-a.card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.08); }
-a.card h3 { margin: 0 0 6px; font-size: 19px; }
-a.card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
-.go { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 600; color: var(--accent); }
-a.card.all .go { color: var(--accent2); }
-footer { margin-top: 28px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+/* Landing page for the Twin Fangs reviews: same dark slate + gold look as the review pages and the Globule grabs page. */
+:root{
+  --bg:#0d1016; --panel:#151a23; --panel2:#1c2330; --line:#283141;
+  --ink:#eef0f4; --muted:#9aa3b2; --faint:#6b7486;
+  --accent:#e2ad4f; --accent-soft:rgba(226,173,79,.14); --bad:#ef5d5d;
+  --display:"Barlow Condensed","Arial Narrow",sans-serif; --body:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg)}
+body{color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.rwbar{position:sticky;top:0;z-index:7;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.rwbar .in{max-width:980px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:18px;height:62px}
+.mark{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:25px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink);text-decoration:none;white-space:nowrap}
+.rwbar nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1}
+.rwbar nav a{color:var(--muted);font-weight:600;font-size:14px;padding:8px 11px;border-radius:8px;white-space:nowrap;text-decoration:none}
+.rwbar nav a:hover{color:var(--ink);background:var(--panel)}
+.rwbar nav a[aria-current="page"]{color:var(--ink);background:var(--panel2)}
+main{max-width:980px;margin:0 auto;padding-block:36px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:30px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,7vw,60px);line-height:.95;letter-spacing:.5px;text-transform:uppercase;margin:6px 0 10px}
+h2{font-family:var(--display);font-weight:700;font-size:28px;letter-spacing:.4px;text-transform:uppercase;margin:0;line-height:1.1}
+.lede{margin:0;color:#cfd4dc;max-width:64ch}
+.boss{display:flex;flex-direction:column;gap:14px}
+.bosshead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px}
+.bosshead p{margin:0;color:var(--muted);font-size:14px}
+.bosshead b{color:var(--ink);font-variant-numeric:tabular-nums}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.card.wide{grid-column:1 / -1;border-color:color-mix(in srgb,var(--accent) 40%,var(--line));background:linear-gradient(180deg,var(--accent-soft),var(--panel) 70%)}
+.card.full{grid-column:1 / -1}
+.card .when{font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+.card h3{margin:0;font-family:var(--display);font-weight:700;font-size:26px;text-transform:uppercase;letter-spacing:.3px;line-height:1}
+.stats{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--muted)}
+.stats b{color:var(--ink);font-variant-numeric:tabular-nums}
+.card p{margin:0;color:#cfd4dc;font-size:14px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14px;padding:8px 13px;border-radius:9px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--panel2)}
+.btn:hover{border-color:var(--faint)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#1c1405}
+.btn:focus-visible,.rwbar a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.earlier{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:14px}
+.earlier a{font-weight:600;text-decoration:none}
+.earlier a:hover{text-decoration:underline}
+footer{color:var(--faint);font-size:13px}
+@media (max-width:640px){.cards{grid-template-columns:1fr}.rwbar .in{gap:8px}.mark{font-size:20px;letter-spacing:1.5px}.rwbar nav a{padding:8px}}
 </style>
 </head>
 <body>
+<header class="rwbar"><div class="in">
+  <a class="mark" href="index.html" aria-label="Reawaken raid reviews"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M13 2 L23 7 V14 C23 19 18.5 22.6 13 24 C7.5 22.6 3 19 3 14 V7 Z" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 15 L13 8 L18 15 M10.5 12.5 H15.5" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Reawaken</span></a>
+  <nav aria-label="Reviews"><a href="index.html" aria-current="page">Nights</a><a href="the-twin-fangs-mythic-all.html">Every pull</a></nav>
+</div></header>
 <main>
-  <h1>Reawaken · Raid reviews</h1>
-  <div class="sub">Built from Warcraft Logs (including its replay) and Wipefest. Newest night first.</div>
-  <h2>The Twin Fangs · Mythic</h2>
-  <div class="cards">
-    <a class="card all" href="the-twin-fangs-mythic-all.html">
-      <h3>Every pull · 76 pulls, Nov 12 to Nov 17</h3>
-      <p>All 2 nights in one log, with the biggest problems across every wipe ranked first. Best pull 45.3%.</p>
-      <span class="go">Open the all-pulls review →</span>
-    </a>
-    <a class="card" href="the-twin-fangs-mythic-2026-11-17.html">
-      <h3>Tue, Nov 17 · Review + Replay</h3>
-      <p>41 pulls. Best pull 45.3%. What ended our pulls, the wipe map, your own report and a replay of every pull.</p>
-      <span class="go">Open the Tue, Nov 17 review →</span>
-    </a>
-    <a class="card" href="the-twin-fangs-mythic-2026-11-12.html">
-      <h3>Thu, Nov 12 · Review + Replay</h3>
-      <p>35 pulls. Best pull 48.4%. What ended our pulls, the wipe map, your own report and a replay of every pull.</p>
-      <span class="go">Open the Thu, Nov 12 review →</span>
-    </a>
+  <div>
+    <div class="eyebrow">Reawaken · Mythic raid reviews</div>
+    <h1>Raid reviews</h1>
+    <p class="lede">Every raid night gets a review built from Warcraft Logs (with its replay) and Wipefest: what ended our pulls, the wipe map, your own report and a replay of every pull. Newest night first.</p>
   </div>
-  <footer>Tip: open "Your report" and pick your name. Built with raid-review-kit.</footer>
+
+  <section class="boss">
+    <div class="bosshead"><h2>The Twin Fangs · Mythic</h2><p>Best pull <b>37.1%</b> · <b>111</b> pulls over 3 nights</p></div>
+    <div class="cards">
+      <article class="card wide">
+        <div class="when">Thu Nov 19</div>
+        <h3>35 pulls · best 37.1%</h3>
+        <div class="stats"><span>Started by <b>Visceral Burst 22</b></span><span><b>Caustic Globule 5</b></span><span><b>Stone Breaker 2</b></span><span>of 32 real pulls</span></div>
+        <p>New best, and our first look at the 4th Brood and Deluge 4. The 2nd Brood alone started 13 wipes. The Kicks + Globules page has every Broodling spot and who kicked it, and every raider's Globule in every Deluge.</p>
+        <div class="links"><a class="btn primary" href="the-twin-fangs-mythic-2026-11-19.html">Review + replay →</a><a class="btn" href="breakdown-2026-11-19.html">Kicks + Globules →</a></div>
+      </article>
+      <article class="card">
+        <div class="when">Tue Nov 17</div>
+        <h3>41 pulls · best 45.3%</h3>
+        <div class="stats"><span>Ended by <b>Visceral Burst 17</b></span><span><b>Caustic Globule 16</b></span><span><b>Ravenous Feast 6</b></span></div>
+        <p>First night with the kick sheet and the Globule rotation.</p>
+        <div class="links"><a class="btn primary" href="the-twin-fangs-mythic-2026-11-17.html">Review + replay →</a><a class="btn" href="globule-grabs-2026-11-17.html">Globule grabs →</a></div>
+      </article>
+      <article class="card">
+        <div class="when">Thu Nov 12</div>
+        <h3>35 pulls · best 48.4%</h3>
+        <div class="stats"><span>Ended by <b>Caustic Globule 15</b></span><span><b>Visceral Burst 9</b></span></div>
+        <div class="links"><a class="btn primary" href="the-twin-fangs-mythic-2026-11-12.html">Review + replay →</a></div>
+      </article>
+      <article class="card full">
+        <div class="when">Nov 12 – Nov 19</div>
+        <h3>Every pull · 111 pulls</h3>
+        <p>All three nights in one review, with the biggest problems across every wipe ranked first.</p>
+        <div class="links"><a class="btn" href="the-twin-fangs-mythic-all.html">Open every pull →</a></div>
+      </article>
+    </div>
+  </section>
+
+  <div class="earlier"><span>Earlier:</span><a href="https://jruble91.github.io/sszorak-review/">Sszorak (killed Nov 5) →</a></div>
+  <footer>Tip: open "Your report" in any review and pick your name. Built with raid-review-kit · replay map image from raidstrats.gg.</footer>
 </main>
 </body>
 </html>
